@@ -19,18 +19,24 @@ public class Kasir extends Pengguna {
     }
 
     public void tampilkanMenu() {
+        System.out.println();
         System.out.println("====================================");
-        System.out.println("         MENU UTAMA KASIR           ");
+        System.out.println("            MENU UTAMA              ");
         System.out.println("====================================");
         System.out.println("1. Kelola Barang");
         System.out.println("2. Kelola Pelanggan");
         System.out.println("3. Transaksi Penjualan");
         System.out.println("4. Lihat Struk Transaksi");
         System.out.println("5. Keluar");
+        System.out.println("------------------------------------");
     }
 
     public void logout() {
         statusLogin = false;
-        System.out.println("Kasir berhasil logout.");
+        System.out.println("Logout berhasil. Terima kasih telah menggunakan sistem kasir!");
+    }
+
+    public boolean getStatusLogin() {
+        return statusLogin;
     }
 }

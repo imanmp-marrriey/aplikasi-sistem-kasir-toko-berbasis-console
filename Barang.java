@@ -16,11 +16,16 @@ public class Barang {
     public double getHarga() { return harga; }
     public int getStok() { return stok; }
 
-    public void ubahStok(int jumlah) {
-        stok -= jumlah;
+    public void ubahStok(int jumlahBaru) {
+        this.stok = jumlahBaru;
+    }
+
+    public void kurangiStok(int jumlah) {
+        this.stok -= jumlah;
+        if (this.stok < 0) this.stok = 0;
     }
 
     public void tampilkanBarang() {
-        System.out.printf("%-10s %-15s Rp%.0f (stok: %d)\n", idBarang, namaBarang, harga, stok);
+        System.out.printf("%-6s | %-15s | Rp %-8.0f | stok: %d\n", idBarang, namaBarang, harga, stok);
     }
 }

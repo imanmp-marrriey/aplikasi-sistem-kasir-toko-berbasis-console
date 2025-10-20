@@ -11,6 +11,6 @@ public class Pelanggan {
     public String getNamaPelanggan() { return namaPelanggan; }
 
     public void tampilkanPelanggan() {
-        System.out.println(idPelanggan + " - " + namaPelanggan);
+        System.out.printf("%-6s | %s\n", idPelanggan, namaPelanggan);
     }
 }
