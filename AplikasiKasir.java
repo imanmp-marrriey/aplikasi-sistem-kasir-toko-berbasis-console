@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class AplikasiKasir {
     private ArrayList<Barang> daftarBarang = new ArrayList<>();
     private ArrayList<Pelanggan> daftarPelanggan = new ArrayList<>();
     private ArrayList<Transaksi> daftarTransaksi = new ArrayList<>();
     private Kasir kasirAktif = new Kasir("iman", "123");
-
     private Scanner input = new Scanner(System.in);
+    private DecimalFormat formatRupiah = new DecimalFormat("#,###");
 
     public void start() {
         login();
@@ -62,6 +63,7 @@ public class AplikasiKasir {
         } while (pilih != 5);
     }
 
+    // ====================== MENU BARANG ======================
     private void kelolaBarang() {
         int pilih;
         do {
@@ -114,14 +116,16 @@ public class AplikasiKasir {
 
     private void tampilkanDaftarBarang() {
         System.out.println("=========== DAFTAR BARANG ===========");
-        System.out.printf("%-8s %-15s %-10s %-5s%n", "ID", "Nama Barang", "Harga", "Stok");
+        System.out.printf("%-8s %-15s %-12s %-5s%n", "ID", "Nama Barang", "Harga", "Stok");
         System.out.println("--------------------------------------");
         for (Barang b : daftarBarang) {
-            System.out.printf("%-8s %-15s %-10.0f %-5d%n", b.getIdBarang(), b.getNamaBarang(), b.getHarga(), b.getStok());
+            System.out.printf("%-8s %-15s Rp %-10s %-5d%n",
+                    b.getIdBarang(), b.getNamaBarang(), formatRupiah.format(b.getHarga()), b.getStok());
         }
         System.out.println();
     }
 
+    // ====================== MENU PELANGGAN ======================
     private void kelolaPelanggan() {
         int pilih;
         do {
@@ -159,6 +163,7 @@ public class AplikasiKasir {
         System.out.println();
     }
 
+    // ====================== MENU TRANSAKSI ======================
     private void menuTransaksi() {
         int pilih;
         do {
@@ -208,7 +213,7 @@ public class AplikasiKasir {
         Transaksi t = new Transaksi(id, p, b, jumlah, total);
         daftarTransaksi.add(t);
         System.out.println("--------------------------------------");
-        System.out.println("Total Harga : Rp " + total);
+        System.out.println("Total Harga : Rp " + formatRupiah.format(total));
         System.out.println("Transaksi berhasil disimpan!\n");
     }
 
@@ -217,13 +222,14 @@ public class AplikasiKasir {
         System.out.printf("%-8s %-15s %-15s %-10s%n", "ID", "Pelanggan", "Barang", "Total Harga");
         System.out.println("--------------------------------------------");
         for (Transaksi t : daftarTransaksi) {
-            System.out.printf("%-8s %-15s %-15s Rp %-10.0f%n",
+            System.out.printf("%-8s %-15s %-15s Rp %-10s%n",
                     t.getIdTransaksi(), t.getPelanggan().getNamaPelanggan(),
-                    t.getBarang().getNamaBarang(), t.getTotal());
+                    t.getBarang().getNamaBarang(), formatRupiah.format(t.getTotal()));
         }
         System.out.println();
     }
 
+    // ====================== MENU STRUK ======================
     private void lihatStruk() {
         System.out.println("=========== STRUK TRANSAKSI ===========");
         for (Transaksi t : daftarTransaksi) {
@@ -232,25 +238,22 @@ public class AplikasiKasir {
             System.out.println("--------------------------------------");
             System.out.println("Barang : " + t.getBarang().getNamaBarang());
             System.out.println("Jumlah : " + t.getJumlah());
-            System.out.println("Total : Rp " + t.getTotal());
+            System.out.println("Total : Rp " + formatRupiah.format(t.getTotal()));
             System.out.println("======================================\n");
         }
     }
 
+    // ====================== FUNGSI CARI ======================
     private Barang cariBarang(String id) {
         for (Barang b : daftarBarang) {
-            if (b.getIdBarang().equalsIgnoreCase(id)) {
-                return b;
-            }
+            if (b.getIdBarang().equalsIgnoreCase(id)) return b;
         }
         return null;
     }
 
     private Pelanggan cariPelanggan(String id) {
         for (Pelanggan p : daftarPelanggan) {
-            if (p.getIdPelanggan().equalsIgnoreCase(id)) {
-                return p;
-            }
+            if (p.getIdPelanggan().equalsIgnoreCase(id)) return p;
         }
         return null;
     }
