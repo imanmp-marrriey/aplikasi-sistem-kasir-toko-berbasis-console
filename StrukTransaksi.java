@@ -16,8 +16,8 @@ public class StrukTransaksi {
         System.out.println("--------------------------------------");
         System.out.println("Daftar Barang : ");
         System.out.println("- " + transaksi.getBarang().getNamaBarang() +
-                           " (" + transaksi.getJumlah() + " x " +
-                           transaksi.getBarang().getHarga() + ") = " + transaksi.getTotal());
+                            " (" + transaksi.getJumlah() + " x " +
+                            transaksi.getBarang().getHarga() + ") = " + transaksi.getTotal());
         System.out.println("--------------------------------------");
         System.out.println("Total Bayar : Rp " + transaksi.getTotal());
         System.out.println("Terima kasih telah berbelanja!");
