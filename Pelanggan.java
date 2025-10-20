@@ -7,10 +7,16 @@ public class Pelanggan {
         this.namaPelanggan = namaPelanggan;
     }
 
-    public String getIdPelanggan() { return idPelanggan; }
-    public String getNamaPelanggan() { return namaPelanggan; }
+    public String getIdPelanggan() {
+        return idPelanggan;
+    }
 
-    public void tampilkanPelanggan() {
-        System.out.printf("%-6s | %s\n", idPelanggan, namaPelanggan);
+    public String getNamaPelanggan() {
+        return namaPelanggan;
+    }
+
+    @Override
+    public String toString() {
+        return idPelanggan + "\t" + namaPelanggan;
     }
 }

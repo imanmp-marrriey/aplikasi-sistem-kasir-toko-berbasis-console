@@ -2,29 +2,41 @@ import java.util.ArrayList;
 
 public class Transaksi {
     private String idTransaksi;
-    private String tanggal; // bisa diisi manual atau menggunakan util date (sederhana: String)
     private Pelanggan pelanggan;
-    private ArrayList<ItemTransaksi> daftarItem = new ArrayList<>();
+    private ArrayList<Barang> barangList = new ArrayList<>();
+    private ArrayList<Integer> jumlahList = new ArrayList<>();
 
     public Transaksi(String idTransaksi, Pelanggan pelanggan) {
         this.idTransaksi = idTransaksi;
         this.pelanggan = pelanggan;
-        this.tanggal = java.time.LocalDate.now().toString();
     }
 
-    public void tambahBarang(Barang barang, int jumlah) {
-        daftarItem.add(new ItemTransaksi(barang, jumlah));
-        barang.kurangiStok(jumlah); // kurangi stok saat ditambahkan ke transaksi
+    public void tambahBarang(Barang b, int jumlah) {
+        barangList.add(b);
+        jumlahList.add(jumlah);
     }
 
-    public double hitungTotal() {
-        double total = 0;
-        for (ItemTransaksi it : daftarItem) total += it.hitungSubtotal();
+    public int getTotalHarga() {
+        int total = 0;
+        for (int i = 0; i < barangList.size(); i++) {
+            total += barangList.get(i).getHarga() * jumlahList.get(i);
+        }
         return total;
     }
 
-    public String getIdTransaksi() { return idTransaksi; }
-    public Pelanggan getPelanggan() { return pelanggan; }
-    public ArrayList<ItemTransaksi> getDaftarItem() { return daftarItem; }
-    public String getTanggal() { return tanggal; }
+    public String getIdTransaksi() {
+        return idTransaksi;
+    }
+
+    public Pelanggan getPelanggan() {
+        return pelanggan;
+    }
+
+    public ArrayList<Barang> getBarangList() {
+        return barangList;
+    }
+
+    public ArrayList<Integer> getJumlahList() {
+        return jumlahList;
+    }
 }

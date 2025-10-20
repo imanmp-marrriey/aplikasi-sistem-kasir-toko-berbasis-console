@@ -1,14 +1,17 @@
 public class Pengguna {
-    protected String id;
-    protected String nama;
+    private String username;
+    private String password;
 
-    public Pengguna(String id, String nama) {
-        this.id = id;
-        this.nama = nama;
+    public Pengguna(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
-    public void tampilkanInfo() {
-        System.out.println("ID   : " + id);
-        System.out.println("Nama : " + nama);
+    public boolean login(String user, String pass) {
+        return this.username.equals(user) && this.password.equals(pass);
+    }
+
+    public String getUsername() {
+        return username;
     }
 }
