@@ -104,11 +104,21 @@ public class AplikasiKasir {
     }
 
     private void tampilkanDaftarBarang() {
-        System.out.println("ID\tNama Barang\tHarga\tStok");
+    System.out.println("======================================");
+    System.out.println("========== DAFTAR BARANG =============");
+    System.out.println("======================================");
+    System.out.printf("%-8s %-15s %-10s %-5s%n", "ID", "Nama Barang", "Harga", "Stok");
+    System.out.println("--------------------------------------");
+
+    if (daftarBarang.isEmpty()) {
+        System.out.println("Belum ada data barang!");
+    } else {
         for (Barang b : daftarBarang) {
-            System.out.println(b);
+            System.out.printf("%-8s %-15s %-10d %-5d%n",
+                    b.getIdBarang(), b.getNamaBarang(), b.getHarga(), b.getStok());
         }
     }
+}
 
     // =========================================
     private void kelolaPelanggan() {
