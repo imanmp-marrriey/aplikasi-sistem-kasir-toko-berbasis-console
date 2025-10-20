@@ -1,16 +1,18 @@
 public class Barang {
     private String idBarang;
     private String namaBarang;
-    private int harga;
+    private double harga;
     private int stok;
 
-    public Barang(String idBarang, String namaBarang, int harga, int stok) {
+    // Constructor
+    public Barang(String idBarang, String namaBarang, double harga, int stok) {
         this.idBarang = idBarang;
         this.namaBarang = namaBarang;
         this.harga = harga;
         this.stok = stok;
     }
 
+    // Getter dan Setter
     public String getIdBarang() {
         return idBarang;
     }
@@ -19,7 +21,7 @@ public class Barang {
         return namaBarang;
     }
 
-    public int getHarga() {
+    public double getHarga() {
         return harga;
     }
 
@@ -27,12 +29,12 @@ public class Barang {
         return stok;
     }
 
-    public void setStok(int stokBaru) {
-        this.stok = stokBaru;
+    public void setStok(int stok) {
+        this.stok = stok;
     }
 
-    @Override
-    public String toString() {
-        return idBarang + "\t" + namaBarang + "\t" + harga + "\t" + stok;
+    // Tampilkan data barang
+    public void tampilkanBarang() {
+        System.out.printf("%-5s %-10s %-8.0f %-5d%n", idBarang, namaBarang, harga, stok);
     }
 }

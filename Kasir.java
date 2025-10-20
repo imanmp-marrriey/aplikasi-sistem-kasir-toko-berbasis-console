@@ -1,42 +1,19 @@
-public class Kasir extends Pengguna {
+public class Kasir {
     private String username;
     private String password;
-    private boolean statusLogin = false;
 
-    public Kasir(String id, String nama, String username, String password) {
-        super(id, nama);
+    // Constructor sesuai dengan pemanggilan di AplikasiKasir.java
+    public Kasir(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public boolean login(String username, String password) {
-        if (this.username.equals(username) && this.password.equals(password)) {
-            statusLogin = true;
-        } else {
-            statusLogin = false;
-        }
-        return statusLogin;
+    // Method login
+    public boolean login(String user, String pass) {
+        return this.username.equals(user) && this.password.equals(pass);
     }
 
-    public void tampilkanMenu() {
-        System.out.println();
-        System.out.println("====================================");
-        System.out.println("            MENU UTAMA              ");
-        System.out.println("====================================");
-        System.out.println("1. Kelola Barang");
-        System.out.println("2. Kelola Pelanggan");
-        System.out.println("3. Transaksi Penjualan");
-        System.out.println("4. Lihat Struk Transaksi");
-        System.out.println("5. Keluar");
-        System.out.println("------------------------------------");
-    }
-
-    public void logout() {
-        statusLogin = false;
-        System.out.println("Logout berhasil. Terima kasih telah menggunakan sistem kasir!");
-    }
-
-    public boolean getStatusLogin() {
-        return statusLogin;
+    public String getUsername() {
+        return username;
     }
 }

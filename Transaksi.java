@@ -1,29 +1,20 @@
-import java.util.ArrayList;
-
 public class Transaksi {
     private String idTransaksi;
     private Pelanggan pelanggan;
-    private ArrayList<Barang> barangList = new ArrayList<>();
-    private ArrayList<Integer> jumlahList = new ArrayList<>();
+    private Barang barang;
+    private int jumlah;
+    private double total;
 
-    public Transaksi(String idTransaksi, Pelanggan pelanggan) {
+    // Constructor sesuai pemanggilan di AplikasiKasir
+    public Transaksi(String idTransaksi, Pelanggan pelanggan, Barang barang, int jumlah, double total) {
         this.idTransaksi = idTransaksi;
         this.pelanggan = pelanggan;
+        this.barang = barang;
+        this.jumlah = jumlah;
+        this.total = total;
     }
 
-    public void tambahBarang(Barang b, int jumlah) {
-        barangList.add(b);
-        jumlahList.add(jumlah);
-    }
-
-    public int getTotalHarga() {
-        int total = 0;
-        for (int i = 0; i < barangList.size(); i++) {
-            total += barangList.get(i).getHarga() * jumlahList.get(i);
-        }
-        return total;
-    }
-
+    // Getter
     public String getIdTransaksi() {
         return idTransaksi;
     }
@@ -32,11 +23,22 @@ public class Transaksi {
         return pelanggan;
     }
 
-    public ArrayList<Barang> getBarangList() {
-        return barangList;
+    public Barang getBarang() {
+        return barang;
     }
 
-    public ArrayList<Integer> getJumlahList() {
-        return jumlahList;
+    public int getJumlah() {
+        return jumlah;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    // Tampilkan data transaksi
+    public void tampilkanTransaksi() {
+        System.out.printf("%-5s %-10s %-10s Rp %.0f%n",
+                idTransaksi, pelanggan.getNamaPelanggan(),
+                barang.getNamaBarang(), total);
     }
 }
